@@ -15,7 +15,7 @@ void PrintIntroduction() {
 )";
 }
 
-void PlayerGame(){
+bool PlayerGame(){
     std::cout << "GUESS MANIA\n";
 
     const int CodeA = 2;
@@ -44,15 +44,31 @@ void PlayerGame(){
     // Check if the guessed numbers match the original numbers
     if (GuessSum == CodeSum && GuessProduct == CodeProduct) {
         std::cout << "You win!" <<"\n";
+        return true;
     } else {
         std::cout << "You Lose!" <<"\n";
+        return false;
     }
 
 }
 
 int main() {
 
+    int LevelDifficulty;
     PrintIntroduction();
-    PlayerGame();
+    while (true)
+    {
+        bool bLevelComplete = PlayerGame();
+        std::cin.clear();
+        std::cin.ignore();
+
+        if (bLevelComplete)
+        {
+            LevelDifficulty++;
+        }
+        
+    }
+    
+
     return 0;
 }
