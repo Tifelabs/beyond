@@ -54,7 +54,7 @@ bool PlayerGame(){
 
 int main() {
 
-    int LevelDifficulty;
+    int LevelDifficulty = 1;
     PrintIntroduction();
     while (true)
     {
