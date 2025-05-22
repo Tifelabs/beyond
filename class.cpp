@@ -2,7 +2,6 @@
 #include <cstring>
 #include <string>
 
-
 class Plane {
     public:
         int Speed;
@@ -10,8 +9,6 @@ class Plane {
         std::string Brand;
         std::string Country;
 };
-
-
 
 int main(int argc, char* argv[]){
     Plane myAviation;               //Creating an object of Plane
@@ -22,9 +19,8 @@ int main(int argc, char* argv[]){
     myAviation.Brand = "Fighter";
     myAviation.Country = "USA";
 
-    std::cout <<"The Average Speed of an" << myAviation.Name << "is" << myAviation.Speed <<'\n';
+    std::cout <<"The Average Speed of an " << myAviation.Name <<" "<< myAviation.Brand << " is" << " " << myAviation.Speed <<'\n';
+    std::cout <<"Made in " << myAviation.Country <<'\n';
 
     return 0;
-
-
 }
