@@ -54,7 +54,12 @@
         "sstream": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "cstring": "cpp",
+        "condition_variable": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "mutex": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
