@@ -110,6 +110,14 @@ int main() {
         {0, 0, 0, 0}
     };
 
+    vector<vector<int>> second_grid = {
+        {0, 0, 0, 0, 0},
+        {0, 1, 1, 0, 0},
+        {0, 0, 0, 6, 4},
+        {0, 1, 1, 0, 4,
+        {0, 0, 0, 0}
+    };
+
     pair<int, int> start = {0, 0}; // Start at (0,0)
     pair<int, int> goal = {4, 4};   // Goal at (4,4)
 
