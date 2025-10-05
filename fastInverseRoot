@@ -1,0 +1,50 @@
+I’ll help you write the famous fast inverse square root algorithm in C++! This is the legendary algorithm from Quake III Arena.
+
+```cpp
+#include <iostream>
+#include <cmath>
+
+float fastInverseSqrt(float number) {
+    long i;
+    float x2, y;
+    const float threehalfs = 1.5F;
+
+    x2 = number * 0.5F;
+    y = number;
+    i = * ( long * ) &y;                       // evil floating point bit level hacking
+    i = 0x5f3759df - ( i >> 1 );               // what the fuck? (original comment)
+    y = * ( float * ) &i;
+    y = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration of Newton-Raphson
+    // y = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, can be removed
+    
+    return y;
+}
+
+int main() {
+    float number = 4.0f;
+    
+    // Fast inverse square root
+    float fastResult = fastInverseSqrt(number);
+    
+    // Standard calculation for comparison
+    float standardResult = 1.0f / std::sqrt(number);
+    
+    std::cout << "Number: " << number << std::endl;
+    std::cout << "Fast inverse sqrt: " << fastResult << std::endl;
+    std::cout << "Standard 1/sqrt(): " << standardResult << std::endl;
+    std::cout << "Error: " << std::abs(fastResult - standardResult) << std::endl;
+    
+    return 0;
+}
+```
+
+**Key points about this algorithm:**
+
+1. **The Magic Number** (`0x5f3759df`): This constant is used for the initial approximation through bit manipulation
+1. **Bit-level Hacking**: It reinterprets the float as an integer to manipulate its bits directly
+1. **Newton-Raphson Iteration**: One iteration refines the approximation for better accuracy
+1. **Speed vs Accuracy**: It’s faster than `1.0f / std::sqrt(x)` but less accurate
+
+**Modern Note**: On modern CPUs with SSE instructions, the standard library’s `1.0f / std::sqrt(x)` is often just as fast or faster, and more accurate. But this algorithm remains famous for its cleverness!
+
+If you want to use it in production code today, you might want to add a second Newton-Raphson iteration (uncomment that line) for better accuracy.​​​​​​​​​​​​​​​​
