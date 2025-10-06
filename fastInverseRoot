@@ -1,6 +1,3 @@
-I’ll help you write the famous fast inverse square root algorithm in C++! This is the legendary algorithm from Quake III Arena.
-
-```cpp
 #include <iostream>
 #include <cmath>
 
@@ -36,15 +33,3 @@ int main() {
     
     return 0;
 }
-```
-
-**Key points about this algorithm:**
-
-1. **The Magic Number** (`0x5f3759df`): This constant is used for the initial approximation through bit manipulation
-1. **Bit-level Hacking**: It reinterprets the float as an integer to manipulate its bits directly
-1. **Newton-Raphson Iteration**: One iteration refines the approximation for better accuracy
-1. **Speed vs Accuracy**: It’s faster than `1.0f / std::sqrt(x)` but less accurate
-
-**Modern Note**: On modern CPUs with SSE instructions, the standard library’s `1.0f / std::sqrt(x)` is often just as fast or faster, and more accurate. But this algorithm remains famous for its cleverness!
-
-If you want to use it in production code today, you might want to add a second Newton-Raphson iteration (uncomment that line) for better accuracy.​​​​​​​​​​​​​​​​
