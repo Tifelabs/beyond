@@ -24,8 +24,5 @@ int main(void){
     for(std::string console : consoles){
         std::cout << console << "\n";
     }
-    
-
-
     return 0;
 }
