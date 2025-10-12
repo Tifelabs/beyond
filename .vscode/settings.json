@@ -59,7 +59,24 @@
         "condition_variable": "cpp",
         "list": "cpp",
         "map": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__locale": "cpp",
+        "__split_buffer": "cpp",
+        "__verbose_abort": "cpp",
+        "bitset": "cpp",
+        "forward_list": "cpp",
+        "ios": "cpp",
+        "locale": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "__node_handle": "cpp",
+        "charconv": "cpp",
+        "execution": "cpp",
+        "optional": "cpp",
+        "print": "cpp",
+        "variant": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
