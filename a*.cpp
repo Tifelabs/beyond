@@ -12,13 +12,11 @@ int x, y;
 float g, h, f;  // g: cost from start, h: heuristic, f: total
 Node* parent;
 
-```
 Node(int x = 0, int y = 0) : x(x), y(y), g(0), h(0), f(0), parent(nullptr) {}
 
 bool operator==(const Node& other) const {
     return x == other.x && y == other.y;
 }
-```
 
 };
 
@@ -246,6 +244,5 @@ if (path.empty()) {
 }
 
 return 0;
-```
 
 }
