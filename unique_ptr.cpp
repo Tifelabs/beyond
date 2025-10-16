@@ -1,5 +1,5 @@
 #include <iostream>
-#include <utility> // for std::move
+#include <utility> 
 
 template <typename T>
 class UniquePtr {
@@ -10,13 +10,12 @@ public:
 // Constructor
 explicit UniquePtr(T* p = nullptr) : ptr(p) {}
 
-// Destructor - automatically deletes the managed object
+// Destructor 
 ~UniquePtr() {
     delete ptr;
 }
 
-// Delete copy constructor and copy assignment
-// (unique_ptr has exclusive ownership)
+/* Delete copy constructor and copy assignment */
 UniquePtr(const UniquePtr&) = delete;
 UniquePtr& operator=(const UniquePtr&) = delete;
 
@@ -66,14 +65,13 @@ void reset(T* p = nullptr) {
 explicit operator bool() const {
     return ptr != nullptr;
 }
-```
 
 };
 
 // Helper function to create UniquePtr (like std::make_unique)
-template <typename T, typename… Args>
-UniquePtr<T> makeUnique(Args&&… args) {
-return UniquePtr<T>(new T(std::forward<Args>(args)…));
+template <typename T, typename Args>
+UniquePtr<T> makeUnique(Args&& args) {
+return UniquePtr<T>(new T(std::forward<Args>(args)));
 }
 
 // Example usage
@@ -96,11 +94,11 @@ void display() {
 };
 
 int main() {
-std::cout << “=== Creating UniquePtr ===\n”;
+std::cout << "=== Creating UniquePtr ===\n";
 UniquePtr<MyClass> ptr1 = makeUnique<MyClass>(42);
 ptr1->display();
 
-```
+
 std::cout << "\n=== Move semantics ===\n";
 UniquePtr<MyClass> ptr2 = std::move(ptr1);
 
