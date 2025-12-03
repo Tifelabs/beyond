@@ -7,8 +7,8 @@ const int WIDTH = 640;
 const int HEIGHT = 480;
 
 // Ball properties
-const float BALL_RADIUS = 1.0f;
-const float BALL_Y_POS = 0.0f; // Initial Y position of the ball
+const float BALL_RADIUS = 2.0f;
+const float BALL_Y_POS = 1.0f; // Initial Y position of the ball
 const float BALL_BOUNCE_HEIGHT = 5.0f; // Maximum height of the bounce
 const float GRAVITY = 9.81f; // Gravity constant
 
@@ -128,8 +128,8 @@ void renderScene(float time, const std::string& filename) {
 }
 
 int main() {
-    float time = 0.0f; // Initial time
-    renderScene(time, "bouncing_ball.ppm"); // Render the scene
+    float time = 0.0f; 
+    renderScene(time, "ball.ppm"); 
     std::cout << "Rendered bouncing_ball.ppm" << std::endl;
     return 0;
 }
