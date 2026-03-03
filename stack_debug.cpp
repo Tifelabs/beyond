@@ -5,8 +5,8 @@ void a(){
 }
 
 void b(){
-    std::cout << "Function b() called\n"
-    a()
+    std::cout << "Function b() called\n";
+    a();
 }
 
 int main(){
