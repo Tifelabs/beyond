@@ -1,14 +1,24 @@
 #include <iostream>
 #include <string>
 
-template<typename N>
+template <typename T>
+T max(T x, T y){
+    return (x > y) ? x : y;
+}
 
-void Text(N *message){
+template <typename T>
+void Text(T *message){
     std::cout << message << '\n';
 }
 
-int main(void){
+template <typename T>
+void User(const T &name, const T &title){
+    std::cout << "Name is " << name << " with " << title << "\n"; 
+}
 
-    Text("This application is depreciated\n");
-    std::cin.get();
+int main(void){
+    Text<const char>("This application is depreciated\n");
+    User<std::string>("Claire", "Phd");
+    std::cout <<"The maximum value is -> " << max<int>(4, 8) << "\n";
+    return 0;
 }
