@@ -1,0 +1,10 @@
+CRJ100
+CRJ200
+CRJ700
+CRJ900
+CRJ1000
+Dash 8 / Q400
+Global Express
+Challenger 300
+Challenger 600
+Learjet 75

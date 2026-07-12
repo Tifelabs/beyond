@@ -1,0 +1,13 @@
+EMB 110 Bandeirante
+EMB 120 Brasilia
+ERJ 145
+E170
+E175
+E190
+E195
+E190-E2
+E195-E2
+Phenom 100
+Phenom 300
+Legacy 500
+Praetor 600
