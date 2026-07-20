@@ -78,5 +78,8 @@
         "print": "cpp",
         "variant": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.default.includePath": [
+        "/opt/homebrew/include"
+    ]
 }
