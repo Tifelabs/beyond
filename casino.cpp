@@ -33,12 +33,14 @@ double withdraw(double balance, double amount){
     return balance;
 }
 
-std::string username(std::string &name){
-    std::ofstream name("username.txt");
+void username(){
+    std::string name;
+    std::ofstream file("username.txt");
     std::cout << "Enter Username: \n";
     std::cin >> name;
+    file << name;
     std::cout << "Username Registered Successfully\n";
-    name.close();
+    file.close();
 }
 
 void display(double& balance){
@@ -77,7 +79,7 @@ void display(double& balance){
             std::cout << "Balance: $" << balance << "\n";
         }
         else if(choice == 6){
-            username(name);
+            username();
         }
         else if(choice == 8){
             running = false;
