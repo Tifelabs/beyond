@@ -33,6 +33,51 @@ double withdraw(double balance, double amount){
     return balance;
 }
 
+void changeUsername(){
+    int option{};
+    std::cout << "Select Operation\n";
+    std::cout << "\t\t[1] Change Username";
+    std::cout << "\t\t[2] Delete Username\n";
+
+    switch (option)
+    {
+    case 1:
+        std::cout << "Previous Username: \n";
+        std::ifstream Rfile("username.txt");
+        if(!Rfile == -1){
+            std::cerr << "Error Opening File\n";
+            return 1;
+        }
+         std::string name;
+         while(std::getline(Rfile, name)){
+            std::cout << name << "\n";
+         }
+         Rfile.close()
+
+        }
+
+        username();
+        break;
+
+    case 2:
+        std::cout << "Are you Sure you want to delete username?\n"
+        std::cout << "Enter [Y]es  [N]o \n";
+        
+        char opt;
+        if(opt == 'Y'){
+            std::cout << "Deleting Username\n";
+
+        }else{
+            std::cout << "Returining back to Menu\n";
+            display();
+        }
+    
+    default:
+        break;
+    }
+
+}
+
 void username(){
     std::string name;
     std::ofstream file("username.txt");
