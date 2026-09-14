@@ -15,6 +15,13 @@ void changeUsername();
 void headsAndTails(double& balance);
 void highOrLow(double& balance);
 void display(double& balance);
+void fatal(const std::string message);
+
+/* Error Handler */
+void fatal(const std::string message){
+    perror(message);
+    exit(-1);
+}
 
 /* Deposit */
 double deposit(double balance, double amount) {
