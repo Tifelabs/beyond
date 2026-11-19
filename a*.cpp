@@ -134,6 +134,9 @@ public:
 };
 
 int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
     // 0 = walkable, 1 = obstacle
     std::vector<std::vector<int>> grid = {
         {0, 0, 0, 0, 0, 0, 0, 0},
