@@ -1,4 +1,8 @@
 #include <iostream>
+#include <chrono>
+#include <random>
+#include <vector>
+#include <set>
 using namespace std;
 
 struct Node {
@@ -136,8 +140,85 @@ void inorder(Node* root) {
     }
 }
 
+// ---- Added for benchmarking ----
+
+bool contains(Node* root, int key) {
+    while (root) {
+        if (key == root->key) return true;
+        root = key < root->key ? root->left : root->right;
+    }
+    return false;
+}
+
+void destroy(Node* root) {
+    if (!root) return;
+    destroy(root->left);
+    destroy(root->right);
+    delete root;
+}
+
+// Runs f() and returns elapsed milliseconds
+template <typename F>
+double timeMs(F f) {
+    auto start = chrono::steady_clock::now();
+    f();
+    auto end = chrono::steady_clock::now();
+    return chrono::duration<double, milli>(end - start).count();
+}
+
+void benchmark(int n) {
+    // Generate keys up front so RNG cost isn't timed
+    mt19937 rng(12345);
+    uniform_int_distribution<int> dist(0, n * 10);
+    vector<int> keys(n);
+    for (int& k : keys) k = dist(rng);
+
+    cout << "\nBenchmark with " << n << " random keys\n";
+
+    // --- AVL tree ---
+    Node* root = nullptr;
+    size_t found = 0;
+
+    double avlInsert = timeMs([&] {
+        for (int k : keys) root = insert(root, k);
+    });
+    double avlSearch = timeMs([&] {
+        for (int k : keys) found += contains(root, k);
+    });
+    double avlDelete = timeMs([&] {
+        for (int i = 0; i < n / 2; i++) root = deleteNode(root, keys[i]);
+    });
+
+    cout << "AVL     insert: " << avlInsert << " ms, search: " << avlSearch
+         << " ms, delete(half): " << avlDelete << " ms\n";
+    destroy(root);
+
+    // --- std::set (red-black tree) for comparison ---
+    set<int> s;
+    size_t found2 = 0;
+
+    double setInsert = timeMs([&] {
+        for (int k : keys) s.insert(k);
+    });
+    double setSearch = timeMs([&] {
+        for (int k : keys) found2 += s.count(k);
+    });
+    double setDelete = timeMs([&] {
+        for (int i = 0; i < n / 2; i++) s.erase(keys[i]);
+    });
+
+    cout << "std::set insert: " << setInsert << " ms, search: " << setSearch
+         << " ms, delete(half): " << setDelete << " ms\n";
+
+    // Print results so the compiler can't optimize the work away
+    cout << "(sanity check: found " << found << " / " << found2 << ")\n";
+}
+
 // Example usage
 int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
     Node* root = nullptr;
     root = insert(root, 10);
     root = insert(root, 20);
@@ -154,6 +235,10 @@ int main() {
     cout << "After deleting 30: ";
     inorder(root);
     cout << endl;
+
+    destroy(root);
+
+    benchmark(1000000);
 
     return 0;
 }
